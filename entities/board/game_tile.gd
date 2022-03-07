@@ -10,20 +10,20 @@ var column_index
 
 
 func _ready() -> void:
-    $Background.color = background_color
-    $Background.mouse_filter = Control.MOUSE_FILTER_PASS
-    $Background.rect_size = Vector2(tile_size, tile_size)
+	$Background.color = background_color
+	$Background.mouse_filter = Control.MOUSE_FILTER_PASS
+	$Background.rect_size = Vector2(tile_size, tile_size)
 
 
 func attach_piece(piece: GamePiece):
-    $XorO.texture = piece.get_texture()
-    held_piece_type = piece.type
-    piece.queue_free()
+	$XorO.texture = piece.get_texture()
+	held_piece_type = piece.type
+	piece.queue_free()
 
 
 func holding_piece() -> bool:
-    return held_piece_type != ""
+	return held_piece_type != ""
 
 func _to_string() -> String:
-    return "GameTile [col:%s, row:%s]" % [column_index, row_index]
+	return "GameTile [col:%s, row:%s]" % [column_index, row_index]
 
