@@ -1,20 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://scenes/table_top.gd" type="Script" id=2]
-
-[sub_resource type="DynamicFontData" id=2]
-font_path = "res://assets/FjallaOne-Regular.ttf"
-
-[sub_resource type="DynamicFont" id=1]
-size = 40
-font_data = SubResource( 2 )
 
 [node name="TableTop" type="Node2D"]
 script = ExtResource( 2 )
 board_size = 4
-
-[node name="BoardPosition" type="Position2D" parent="."]
-position = Vector2( 404, 198 )
 
 [node name="X_PiecePosition" type="Position2D" parent="."]
 position = Vector2( 79, 238 )
@@ -29,10 +19,5 @@ margin_right = 125.0
 margin_bottom = 380.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="."]
-anchor_right = 1.0
-margin_right = 1024.0
-margin_bottom = 64.0
-custom_fonts/font = SubResource( 1 )
-text = "Node2D drag and drop"
-align = 1
+[node name="BoardPosition" type="Position2D" parent="."]
+position = Vector2( 384, 192 )

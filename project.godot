@@ -23,11 +23,23 @@ _global_script_classes=[ {
 "class": "GameTile",
 "language": "GDScript",
 "path": "res://entities/board/game_tile.gd"
+}, {
+"base": "Reference",
+"class": "Win",
+"language": "GDScript",
+"path": "res://entities/board/win.gd"
+}, {
+"base": "Reference",
+"class": "WinDetector",
+"language": "GDScript",
+"path": "res://entities/board/win_detector.gd"
 } ]
 _global_script_class_icons={
 "GameBoard": "",
 "GamePiece": "",
-"GameTile": ""
+"GameTile": "",
+"Win": "",
+"WinDetector": ""
 }
 
 [application]
