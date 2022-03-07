@@ -16,8 +16,8 @@ func _ready() -> void:
     game_board.connect("game_piece_placed_on_board", self, "_on_game_piece_placed_on_board")
     game_board.connect("game_piece_placed_off_board", self, "_on_game_piece_placed_off_board")
     game_board.build_board(board_size)
-    game_board.position = $BoardPosition.position
-    add_child(game_board)
+    $BoardPosition.add_child(game_board)
+    # @TODO figure out how to center the game board
     _spawn_new_game_piece("X")
     _spawn_new_game_piece("O")
 
@@ -33,6 +33,9 @@ func _spawn_new_game_piece(x_or_o: String) -> void:
 
 func _on_game_piece_placed_on_board(game_piece: GamePiece):
     _spawn_new_game_piece(game_piece.type)
+    var victor = game_board.get_winner()
+    if victor:
+        print("And the winner is: %s" % victor)
 
 func _on_game_piece_placed_off_board(game_piece: GamePiece):
     _return_piece_to_holder(game_piece)
