@@ -24,6 +24,3 @@ func attach_piece(piece: GamePiece):
 func holding_piece() -> bool:
 	return held_piece_type != ""
 
-func _to_string() -> String:
-	return "GameTile [col:%s, row:%s]" % [column_index, row_index]
-
