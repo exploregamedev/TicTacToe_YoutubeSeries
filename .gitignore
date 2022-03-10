@@ -13,8 +13,5 @@ data_*/
 /.vscode/
 /.idea/
 
-# save files
-/debug/save/*
-
 # OSX
 .DS_Store

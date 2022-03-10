@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/table_top.gd" type="Script" id=2]
+
+[node name="TableTop" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="X_PiecePosition" type="Position2D" parent="."]
+position = Vector2( 79, 238 )
+
+[node name="O_PiecePosition" type="Position2D" parent="."]
+position = Vector2( 77, 332 )
+
+[node name="PiecesHolder" type="ColorRect" parent="."]
+margin_left = 37.0
+margin_top = 196.0
+margin_right = 125.0
+margin_bottom = 380.0
+mouse_filter = 2
+
+[node name="BoardPosition" type="Position2D" parent="."]
+position = Vector2( 384, 192 )
