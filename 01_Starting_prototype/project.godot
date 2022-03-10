@@ -41,7 +41,7 @@ settings/fps/force_fps=60
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [input]
 

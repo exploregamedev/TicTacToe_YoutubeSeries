@@ -29,10 +29,6 @@ func _attach_to_mouse():
 	global_position = get_global_mouse_position()
 
 
-#func _input(event: InputEvent) -> void:
-# _input would not work in this case as ALL game pieces in scene would be called
-#    Rather we attach to the input_event signal of the CollisionObject2D for each individual
-#    instance of GamePiece.
 func _on_GamePiece_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	# Mouse is over the game piece and left click was made
 	if Input.is_action_just_pressed("click"):

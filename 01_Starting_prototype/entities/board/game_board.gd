@@ -1,10 +1,12 @@
 extends Node2D
 class_name GameBoard
 
-var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
-var _game_piece_over_tile: GameTile
 signal game_piece_placed_on_board(game_piece)
 signal game_piece_placed_off_board(game_piece)
+
+var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
+var _game_piece_over_tile: GameTile
+var board_matrix: Array = []
 
 
 func build_board(board_size: int = 3)-> void:
@@ -20,7 +22,7 @@ func build_board(board_size: int = 3)-> void:
 			var tile_position = Vector2(
 				position.x + x_offset,
 				position.y + y_offset
-				)
+			)
 			tile.position = tile_position
 			tile.row_index = row_number
 			tile.column_index = column_number

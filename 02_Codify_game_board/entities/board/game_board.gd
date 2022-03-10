@@ -1,13 +1,13 @@
 extends Node2D
 class_name GameBoard
 
-var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
-var _game_piece_over_tile: GameTile
-#signal game_piece_dropped(game_piece)
 signal game_piece_placed_on_board(game_piece)
 signal game_piece_placed_off_board(game_piece)
 
+var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
+var _game_piece_over_tile: GameTile
 var board_matrix: Array = []
+
 
 func build_board(board_size: int = 3)-> void:
 	var tile_size: int
@@ -23,12 +23,12 @@ func build_board(board_size: int = 3)-> void:
 			var tile_position = Vector2(
 				position.x + x_offset,
 				position.y + y_offset
-				)
+			)
 			tile.position = tile_position
 			tile.row_index = row_number
 			tile.column_index = column_number
-
 			add_child(tile)
+
 
 func get_winner():
 	return WinDetector.check_win(self.board_matrix)
@@ -36,8 +36,11 @@ func get_winner():
 
 func _spawn_tile() -> GameTile:
 	var game_tile: GameTile = game_tile_scene.instance()
-	game_tile.connect("area_entered", self, "_on_game_tile_area_entered", [game_tile])
-	game_tile.connect("area_exited", self, "_on_game_tile_area_exited", [game_tile])
+	var connection
+	connection = game_tile.connect("area_entered", self, "_on_game_tile_area_entered", [game_tile])
+	assert(connection == OK)
+	connection = game_tile.connect("area_exited", self, "_on_game_tile_area_exited", [game_tile])
+	assert(connection == OK)
 	return game_tile
 
 
@@ -47,7 +50,7 @@ func _on_game_tile_area_entered(_game_piece_area, tile: GameTile):
 	_game_piece_over_tile = tile
 
 
-func _on_game_tile_area_exited(_game_piece_area, tile: GameTile):
+func _on_game_tile_area_exited(_game_piece_area, _tile: GameTile):
 	_game_piece_over_tile = null
 
 
@@ -60,6 +63,7 @@ func _on_game_piece_dropped(piece: GamePiece):
 		emit_signal("game_piece_placed_on_board", piece)
 	else:
 		emit_signal("game_piece_placed_off_board", piece)
+
 
 func _to_string() -> String:
 	var ascii_matrix = ""
