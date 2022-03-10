@@ -218,7 +218,6 @@ var win_parameters = [
 			["O", null, null]
 		], Win.WIN_TYPE.DIAGONAL, "O", 1
 	]
-
 ]
 
 

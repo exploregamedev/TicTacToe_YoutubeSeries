@@ -44,7 +44,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="TicTacToe"
+config/name="TTT 03 Refactoring and unit testing"
 run/main_scene="res://scenes/table_top.tscn"
 
 [debug]
@@ -53,7 +53,7 @@ settings/fps/force_fps=60
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
 
 [input]
 

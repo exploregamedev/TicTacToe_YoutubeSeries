@@ -1,17 +1,21 @@
 extends Reference
 class_name Win
 
-
 var win_type: int # WIN_TYPE
 var win_index: int
-var victor
+var victor: String
 
 enum WIN_TYPE{COLUMN, ROW, DIAGONAL}
 
 
-func _init(type, index, winner):
+func _init(type: int, index: int, winner: String):
+	assert(WIN_TYPE.values().has(type))
+	assert(typeof(index) == TYPE_INT)
+	assert(["X", "O"].has(winner.to_upper()))
 	win_type = type
+
 	win_index = index
+
 	victor = winner
 
 

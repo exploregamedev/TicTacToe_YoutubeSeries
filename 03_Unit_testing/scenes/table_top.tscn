@@ -11,7 +11,7 @@ position = Vector2( 79, 238 )
 [node name="O_PiecePosition" type="Position2D" parent="."]
 position = Vector2( 77, 332 )
 
-[node name="PiecesHolder" type="ColorRect" parent="."]
+[node name="PiecesHolderBg" type="ColorRect" parent="."]
 margin_left = 37.0
 margin_top = 196.0
 margin_right = 125.0

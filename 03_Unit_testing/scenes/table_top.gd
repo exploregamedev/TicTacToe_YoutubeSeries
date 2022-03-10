@@ -13,19 +13,22 @@ var game_board: GameBoard
 func _ready() -> void:
 	VisualServer.set_default_clear_color(background_color)
 	game_board = game_board_scene.instance()
-	game_board.connect("game_piece_placed_on_board", self, "_on_game_piece_placed_on_board")
-	game_board.connect("game_piece_placed_off_board", self, "_on_game_piece_placed_off_board")
+	var connection
+	connection = game_board.connect("game_piece_placed_on_board", self, "_on_game_piece_placed_on_board")
+	assert(connection == OK)
+	connection = game_board.connect("game_piece_placed_off_board", self, "_on_game_piece_placed_off_board")
+	assert(connection == OK)
 	game_board.build_board(board_size)
 	$BoardPosition.add_child(game_board)
-	# @TODO figure out how to center the game board
 	_spawn_new_game_piece("X")
 	_spawn_new_game_piece("O")
 
 
-
 func _spawn_new_game_piece(x_or_o: String) -> void:
 	var game_piece: GamePiece = game_piece_scene.instance()
-	game_piece.connect("game_piece_dropped", game_board, "_on_game_piece_dropped")
+	var connection
+	connection = game_piece.connect("game_piece_dropped", game_board, "_on_game_piece_dropped")
+	assert(connection == OK)
 	game_piece.position = get_node("%s_PiecePosition" % x_or_o.to_upper()).position
 	game_piece.type = x_or_o
 	add_child(game_piece)
@@ -37,11 +40,14 @@ func _on_game_piece_placed_on_board(game_piece: GamePiece):
 	if victor:
 		print("And the winner is: %s" % victor)
 
+
 func _on_game_piece_placed_off_board(game_piece: GamePiece):
 	_return_piece_to_holder(game_piece)
 
+
 func _return_piece_to_holder(piece: GamePiece):
 	piece.position = get_node("%s_PiecePosition" % piece.type.to_upper()).position
+
 
 func _to_string() -> String:
 	return "TableTop"
