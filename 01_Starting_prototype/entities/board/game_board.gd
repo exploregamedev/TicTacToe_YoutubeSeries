@@ -6,14 +6,12 @@ var _game_piece_over_tile: GameTile
 signal game_piece_placed_on_board(game_piece)
 signal game_piece_placed_off_board(game_piece)
 
-var board_matrix: Array = []
 
 func build_board(board_size: int = 3)-> void:
 	var tile_size: int
 	for row_number in board_size:
 		var this_row = []
 		this_row.resize(board_size)
-		board_matrix.append(this_row)
 		for column_number in board_size:
 			var tile: GameTile = _spawn_tile()
 			tile_size = tile.tile_size
@@ -52,9 +50,7 @@ func _on_game_tile_area_exited(_game_piece_area, _tile: GameTile):
 func _on_game_piece_dropped(piece: GamePiece):
 	if _game_piece_over_tile:
 		_game_piece_over_tile.attach_piece(piece)
-		board_matrix[_game_piece_over_tile.row_index][_game_piece_over_tile.column_index] = piece.type
 		_game_piece_over_tile = null
-		print(self)
 		emit_signal("game_piece_placed_on_board", piece)
 	else:
 		emit_signal("game_piece_placed_off_board", piece)
