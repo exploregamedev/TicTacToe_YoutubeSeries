@@ -16,16 +16,16 @@ func _process(_delta: float) -> void:
 		_attach_to_mouse()
 
 
-func get_texture():
+func get_texture() -> Texture:
 	return $Sprite.texture
 
 
-func set_type(x_or_o: String):
+func set_type(x_or_o: String) -> void:
 	type = x_or_o.to_lower()
 	$Sprite.texture = load("res://assets/game_piece_%s.png" % type.to_lower())
 
 
-func _attach_to_mouse():
+func _attach_to_mouse() -> void:
 	global_position = get_global_mouse_position()
 
 

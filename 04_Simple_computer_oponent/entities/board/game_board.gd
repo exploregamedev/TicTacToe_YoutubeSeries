@@ -43,17 +43,17 @@ func _spawn_tile() -> GameTile:
 	return game_tile
 
 
-func _on_game_tile_area_entered(_game_piece_area, tile: GameTile):
+func _on_game_tile_area_entered(_game_piece_area: Area2D, tile: GameTile) -> void:
 	if tile.holding_piece():
 		return
 	_game_piece_over_tile = tile
 
 
-func _on_game_tile_area_exited(_game_piece_area, _tile: GameTile):
+func _on_game_tile_area_exited(_game_piece_area: Area2D, _tile: GameTile) -> void:
 	_game_piece_over_tile = null
 
 
-func _on_game_piece_dropped(piece: GamePiece):
+func _on_game_piece_dropped(piece: GamePiece) -> void:
 	if _game_piece_over_tile:
 		_game_piece_over_tile.attach_piece(piece)
 		board_matrix[_game_piece_over_tile.row_index][_game_piece_over_tile.column_index] = piece.type

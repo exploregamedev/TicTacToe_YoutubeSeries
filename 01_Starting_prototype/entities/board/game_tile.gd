@@ -15,7 +15,7 @@ func _ready() -> void:
 	$Background.rect_size = Vector2(tile_size, tile_size)
 
 
-func attach_piece(piece: GamePiece):
+func attach_piece(piece: GamePiece) -> void:
 	$XorO.texture = piece.get_texture()
 	held_piece_type = piece.type
 	piece.queue_free()

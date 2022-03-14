@@ -21,7 +21,7 @@ func _ready() -> void:
 	$BoardPosition.add_child(game_board)
 
 
-func _on_game_piece_placed_on_board(game_piece: GamePiece):
+func _on_game_piece_placed_on_board(game_piece: GamePiece) -> void:
 	var victor = game_board.get_winner()
 	if victor:
 		print("And the winner is: %s" % victor)

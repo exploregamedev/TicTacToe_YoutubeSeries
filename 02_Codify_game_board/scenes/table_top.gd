@@ -32,14 +32,14 @@ func __spawn_game_piece(x_or_o: String) -> void:
 	add_child(game_piece)
 
 
-func _on_game_piece_placed_on_board(game_piece: GamePiece):
+func _on_game_piece_placed_on_board(game_piece: GamePiece) -> void:
 	__spawn_game_piece(game_piece.type)
 	var victor = game_board.get_winner()
 	if victor:
 		print("And the winner is: %s" % victor)
 
 
-func _return_piece_to_holder(piece: GamePiece):
+func _return_piece_to_holder(piece: GamePiece) -> void:
 	piece.position = get_node("%s_PiecePosition" % piece.type.to_upper()).position
 
 
