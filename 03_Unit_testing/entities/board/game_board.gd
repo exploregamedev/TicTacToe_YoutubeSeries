@@ -2,7 +2,6 @@ extends Node2D
 class_name GameBoard
 
 signal game_piece_placed_on_board(game_piece)
-signal game_piece_placed_off_board(game_piece)
 
 var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
 var _game_piece_over_tile: GameTile
@@ -61,8 +60,6 @@ func _on_game_piece_dropped(piece: GamePiece):
 		_game_piece_over_tile = null
 		print(self)
 		emit_signal("game_piece_placed_on_board", piece)
-	else:
-		emit_signal("game_piece_placed_off_board", piece)
 
 
 func _to_string() -> String:
