@@ -4,12 +4,12 @@ export(int) var board_size: int = 3
 export(Color) var background_color = Color.black
 
 
-
 var game_board_scene: PackedScene = preload("res://entities/board/game_board.tscn")
 var game_board: GameBoard
 onready var game_piece_holder: GamePieceHolder = $GamePieceHolder
 
 
+# Set up the game board and the initial game pieces
 func _ready() -> void:
 	VisualServer.set_default_clear_color(background_color)
 	game_board = game_board_scene.instance()

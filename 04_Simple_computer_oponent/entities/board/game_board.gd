@@ -8,6 +8,7 @@ var _game_piece_over_tile: GameTile
 var board_matrix: Array = []
 
 
+# Layout the gameboard tiles grid in the scene
 func build_board(board_size: int = 3)-> void:
 	var tile_size: int
 	for row_number in board_size:
@@ -33,6 +34,11 @@ func get_winner():
 	return WinDetector.check_win(self.board_matrix)
 
 
+# Connect the area entered/exited signals to functions here so we can
+# detect if a game piece is over a given tile. We make the game piece's
+# collision shape encompass the entire sprite. The game tile's collision shape
+# is a small dot at its center, thus a game piece is never seen to be over more
+# then one tile at any given time.
 func _spawn_tile() -> GameTile:
 	var game_tile: GameTile = game_tile_scene.instance()
 	var connection
@@ -44,8 +50,6 @@ func _spawn_tile() -> GameTile:
 
 
 func _on_game_tile_area_entered(_game_piece_area: Area2D, tile: GameTile) -> void:
-	if tile.holding_piece():
-		return
 	_game_piece_over_tile = tile
 
 
@@ -53,8 +57,10 @@ func _on_game_tile_area_exited(_game_piece_area: Area2D, _tile: GameTile) -> voi
 	_game_piece_over_tile = null
 
 
+# If a game piece is dropped over a tile, attach it to that tile
+# The signal is attached to the function in TableTop::_spawn_game_piece()
 func _on_game_piece_dropped(piece: GamePiece) -> void:
-	if _game_piece_over_tile:
+	if _game_piece_over_tile and not _game_piece_over_tile.is_holding_piece:
 		_game_piece_over_tile.attach_piece(piece)
 		board_matrix[_game_piece_over_tile.row_index][_game_piece_over_tile.column_index] = piece.type
 		_game_piece_over_tile = null
