@@ -51,7 +51,11 @@ _global_script_class_icons={
 [application]
 
 config/name="TTT 05 scene changer"
-run/main_scene="res://scenes/table_top.tscn"
+run/main_scene="res://scenes/start_game.tscn"
+
+[autoload]
+
+SceneChanger="*res://globals/scene_changer.tscn"
 
 [debug]
 
