@@ -39,7 +39,7 @@ static func _transpose(matrix):
 
 static func _is_winning_sequence(sequence: Array) -> bool:
 	var sequence_unique_members = _unique(sequence)
-	return len(sequence_unique_members) == 1 and sequence_unique_members[0] != null
+	return len(sequence_unique_members) == 1 and not sequence_unique_members[0] in ["", null]
 
 
 static func _unique(values):

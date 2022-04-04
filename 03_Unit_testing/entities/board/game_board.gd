@@ -63,7 +63,6 @@ func _on_game_tile_area_exited(_game_piece_area: Area2D, _tile: GameTile) -> voi
 func _on_game_piece_dropped(piece: GamePiece) -> void:
 	if _game_piece_over_tile and not _game_piece_over_tile.is_holding_piece:
 		_game_piece_over_tile.attach_piece(piece)
-		board_matrix[_game_piece_over_tile.row_index][_game_piece_over_tile.column_index] = piece.type
 		_game_piece_over_tile = null
 		print(self)
 		emit_signal("player_placed_game_piece_on_board", piece)
