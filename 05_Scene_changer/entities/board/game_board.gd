@@ -1,20 +1,20 @@
 extends Node2D
 class_name GameBoard
 
-signal game_piece_placed_on_board(game_piece)
+signal player_placed_game_piece_on_board(game_piece)
 
 var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
 var _game_piece_over_tile: GameTile
-var board_matrix: Array = []
+var tiles_matrix: Array = []
 
 
 # Layout the gameboard tiles grid in the scene
-func build_board(board_size: int = 3)-> void:
+func build_board(board_size: int = 3) -> void:
 	var tile_size: int
 	for row_number in board_size:
 		var this_row = []
 		this_row.resize(board_size)
-		board_matrix.append(this_row)
+		tiles_matrix.append(this_row)
 		for column_number in board_size:
 			var tile: GameTile = _spawn_tile()
 			tile_size = tile.tile_size
@@ -27,11 +27,12 @@ func build_board(board_size: int = 3)-> void:
 			tile.position = tile_position
 			tile.row_index = row_number
 			tile.column_index = column_number
+			tiles_matrix[row_number][column_number] = tile
 			add_child(tile)
 
 
 func get_winner():
-	return WinDetector.check_win(self.board_matrix)
+	return WinDetector.check_win(_dump_state())
 
 
 # Connect the area entered/exited signals to functions here so we can
@@ -65,11 +66,24 @@ func _on_game_piece_dropped(piece: GamePiece) -> void:
 		board_matrix[_game_piece_over_tile.row_index][_game_piece_over_tile.column_index] = piece.type
 		_game_piece_over_tile = null
 		print(self)
-		emit_signal("game_piece_placed_on_board", piece)
+		emit_signal("player_placed_game_piece_on_board", piece)
 
+# output a simplified matrix of just "x"|"o"|"" values
+# this form simplifies the win detection code
+func _dump_state() -> Array:
+	var state = []
+	var board_size = len(tiles_matrix)
+	for row_number in board_size:
+		var this_row = []
+		this_row.resize(board_size)
+		state.append(this_row)
+		for column_number in board_size:
+			var game_tile: GameTile = tiles_matrix[row_number][column_number]
+			state[row_number][column_number] = game_tile.held_piece_type
+	return state
 
 func _to_string() -> String:
 	var ascii_matrix = ""
-	for row in board_matrix:
+	for row in _dump_state():
 		ascii_matrix += "\n%s" % str(row)
 	return ascii_matrix

@@ -19,7 +19,7 @@ func initialize(game_board: GameBoard) -> void:
 	_spawn_game_piece("o")
 
 
-func turn_complete(just_played_piece: GamePiece) -> void:
+func initialize_player_turn(just_played_piece: GamePiece) -> void:
 	_set_pieces_holder_state(just_played_piece)
 
 

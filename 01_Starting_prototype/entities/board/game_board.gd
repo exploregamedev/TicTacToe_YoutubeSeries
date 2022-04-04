@@ -1,11 +1,10 @@
 extends Node2D
 class_name GameBoard
 
-signal game_piece_placed_on_board(game_piece)
+signal player_placed_game_piece_on_board(game_piece)
 
 var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
 var _game_piece_over_tile: GameTile
-var board_matrix: Array = []
 
 
 # Layout the gameboard tiles grid in the scene
@@ -60,4 +59,4 @@ func _on_game_piece_dropped(piece: GamePiece) -> void:
 	if _game_piece_over_tile and not _game_piece_over_tile.is_holding_piece:
 		_game_piece_over_tile.attach_piece(piece)
 		_game_piece_over_tile = null
-		emit_signal("game_piece_placed_on_board", piece)
+		emit_signal("player_placed_game_piece_on_board", piece)

@@ -14,7 +14,7 @@ func _ready() -> void:
 	VisualServer.set_default_clear_color(background_color)
 	game_board = game_board_scene.instance()
 	var connection
-	connection = game_board.connect("game_piece_placed_on_board", self, "_on_game_piece_placed_on_board")
+	connection = game_board.connect("player_placed_game_piece_on_board", self, "_on_player_placed_game_piece_on_board")
 	assert(connection == OK)
 	game_board.build_board(board_size)
 	$BoardPosition.add_child(game_board)
@@ -36,5 +36,5 @@ func _spawn_game_piece(x_or_o: String) -> void:
 
 
 # When a game piece is placed on the board, we need to instance a new one in this scene
-func _on_game_piece_placed_on_board(game_piece: GamePiece) -> void:
+func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
 	_spawn_game_piece(game_piece.type)

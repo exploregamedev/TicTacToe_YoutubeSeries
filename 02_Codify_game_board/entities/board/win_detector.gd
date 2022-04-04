@@ -20,14 +20,14 @@ static func _check_rows(board):
 
 
 static func _check_columns(board):
-	board = transpose(board.duplicate())
+	board = _transpose(board.duplicate())
 	for row_idx in range(len(board)):
 		var row = board[row_idx]
 		if _is_winning_sequence(row):
 			return row[0] # The X or O making up this row
 
 
-static func transpose(matrix):
+static func _transpose(matrix):
 	var transposed = []
 	for i in range(len(matrix)):
 		var temp = []
