@@ -12,15 +12,15 @@ static func check_win(board_matrix: Array):
 	return _check_diagonals(board_matrix)
 
 
-static func _check_rows(board):
+static func _check_rows(board) -> Win:
 	return _check_for_winning_sequence(board, Win.WIN_TYPE.ROW)
 
 
-static func _check_columns(board):
+static func _check_columns(board) -> Win:
 	return _check_for_winning_sequence(board, Win.WIN_TYPE.COLUMN)
 
 
-static func _check_diagonals(board):
+static func _check_diagonals(board) -> Win:
 	var diag = []
 	for i in range(len(board)):
 		diag.append(board[i][i])
@@ -32,15 +32,17 @@ static func _check_diagonals(board):
 		diag.append(board[i][len(board) - i - 1])
 	if _is_winning_sequence(diag):
 		return Win.new(Win.WIN_TYPE.DIAGONAL, 1, diag[0])
+    return null
 
 
-static func _check_for_winning_sequence(board: Array, rows_or_columns: int):
+static func _check_for_winning_sequence(board: Array, rows_or_columns: int) -> Win:
 	if rows_or_columns == Win.WIN_TYPE.COLUMN:
 		board = _transpose(board.duplicate())
 	for row_idx in range(len(board)):
 		var row = board[row_idx]
 		if _is_winning_sequence(row):
 			return Win.new(rows_or_columns, row_idx, row[0])
+	return null
 
 
 static func _transpose(matrix):

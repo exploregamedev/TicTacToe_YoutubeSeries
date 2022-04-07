@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/start_game.gd" type="Script" id=1]
+
+[node name="StartGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Padding" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Vbox" type="VBoxContainer" parent="Padding"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="Title" type="Label" parent="Padding/Vbox"]
+margin_right = 984.0
+margin_bottom = 14.0
+text = "Tick Tac Toe"
+align = 1
+
+[node name="Hbox" type="HBoxContainer" parent="Padding/Vbox"]
+margin_top = 18.0
+margin_right = 984.0
+margin_bottom = 38.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="StartSinglePlayer" type="Button" parent="Padding/Vbox/Hbox"]
+margin_left = 324.0
+margin_right = 489.0
+margin_bottom = 20.0
+text = "Start single player game"
+
+[node name="StartTwoPlayer" type="Button" parent="Padding/Vbox/Hbox"]
+margin_left = 509.0
+margin_right = 659.0
+margin_bottom = 20.0
+text = "Start two player game"
+
+[node name="HBox" type="HBoxContainer" parent="Padding/Vbox"]
+margin_top = 42.0
+margin_right = 984.0
+margin_bottom = 62.0
+alignment = 1
+
+[node name="QuitGame" type="Button" parent="Padding/Vbox/HBox"]
+margin_left = 452.0
+margin_right = 531.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Quit game"

@@ -5,6 +5,7 @@ export(Color) var background_color = Color.black
 export(String, FILE, "*.tscn") var round_complete_scene_path
 
 
+
 var game_board_scene: PackedScene = preload("res://entities/board/game_board.tscn")
 var game_board: GameBoard
 onready var game_piece_holder: GamePieceHolder = $GamePieceHolder
@@ -22,7 +23,8 @@ func _ready() -> void:
 	assert(connection == OK)
 	game_board.build_board(board_size)
 	$BoardPosition.add_child(game_board)
-	computer_opponent = ComputerOpponent.new()
+	if GameState.game_mode == GameState.GameMode.SinglePlayer:
+		computer_opponent = ComputerOpponent.new()
 
 
 func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void:
@@ -46,6 +48,7 @@ func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void
 
 func _end_game(victor: Win) -> void:
 	print("And the winner is: %s" % victor)
+	GameState.last_winner = victor
 	SceneChanger.change_scene(round_complete_scene_path)
 
 
