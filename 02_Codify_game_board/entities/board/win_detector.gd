@@ -17,6 +17,7 @@ static func _check_rows(board) -> String:
 		var row = board[row_idx]
 		if _is_winning_sequence(row):
 			return row[0] # The X or O making up this row
+	return ""
 
 
 static func _check_columns(board) -> String:
@@ -25,6 +26,7 @@ static func _check_columns(board) -> String:
 		var row = board[row_idx]
 		if _is_winning_sequence(row):
 			return row[0] # The X or O making up this row
+	return ""
 
 
 static func _transpose(matrix):
@@ -49,7 +51,7 @@ static func _unique(values):
 	return set_facade.keys()
 
 
-static func _check_diagonals(board) -> Win:
+static func _check_diagonals(board) -> String:
 	var diag = []
 	for i in range(len(board)):
 		diag.append(board[i][i])
@@ -60,4 +62,4 @@ static func _check_diagonals(board) -> Win:
 		diag.append(board[i][len(board) - i - 1])
 	if _is_winning_sequence(diag):
 		return diag[0] # The X or O making up this diagonal
-    return null
+	return ""
