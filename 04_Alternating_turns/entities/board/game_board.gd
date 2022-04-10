@@ -9,7 +9,7 @@ var tiles_matrix: Array = []
 
 
 # Layout the gameboard tiles grid in the scene
-func build_board(board_size: int = 3)-> void:
+func build_board(board_size: int = 3) -> void:
 	var tile_size: int
 	for row_number in board_size:
 		var this_row = []
@@ -33,6 +33,14 @@ func build_board(board_size: int = 3)-> void:
 
 func get_winner():
 	return WinDetector.check_win(_dump_state())
+
+
+func is_full() -> bool:
+	var board_state = _dump_state()
+	for row in board_state:
+		if "" in row:
+			return false
+	return true
 
 
 # Connect the area entered/exited signals to functions here so we can

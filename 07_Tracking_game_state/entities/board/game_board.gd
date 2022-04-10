@@ -44,6 +44,14 @@ func get_winner():
 	return WinDetector.check_win(dump_state())
 
 
+func is_full() -> bool:
+	var board_state = _dump_state()
+	for row in board_state:
+		if "" in row:
+			return false
+	return true
+
+
 # Connect the area entered/exited signals to functions here so we can
 # detect if a game piece is over a given tile. We make the game piece's
 # collision shape encompass the entire sprite. The game tile's collision shape

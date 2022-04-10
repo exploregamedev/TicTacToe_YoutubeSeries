@@ -27,6 +27,9 @@ func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
 	if victor:
 		print("And the winner is: %s" % victor)
 		SceneChanger.change_scene(round_complete_scene_path)
+	elif(game_board.is_full()):
+		print("Game over, there was a tie")
+		SceneChanger.change_scene(round_complete_scene_path)
 	else:
 		game_piece_holder.initialize_player_turn(game_piece)
 

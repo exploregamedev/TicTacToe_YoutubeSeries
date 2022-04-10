@@ -44,7 +44,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="TTT 04 Simple computer opponent"
+config/name="TTT 04 Alternating turns"
 run/main_scene="res://scenes/table_top.tscn"
 
 [debug]

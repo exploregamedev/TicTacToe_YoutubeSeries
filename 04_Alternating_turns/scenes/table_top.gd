@@ -25,6 +25,8 @@ func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
 	var victor = game_board.get_winner()
 	if victor:
 		print("And the winner is: %s" % victor)
+	elif(game_board.is_full()):
+		print("Game over, there was a tie")
 	else:
 		game_piece_holder.initialize_player_turn(game_piece)
 
