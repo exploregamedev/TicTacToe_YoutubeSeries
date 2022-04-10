@@ -43,9 +43,5 @@ func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
 		print("And the winner is: %s" % victor)
 
 
-func _return_piece_to_holder(piece: GamePiece) -> void:
-	piece.position = get_node("%s_PiecePosition" % piece.type.to_upper()).position
-
-
 func _to_string() -> String:
 	return "TableTop"

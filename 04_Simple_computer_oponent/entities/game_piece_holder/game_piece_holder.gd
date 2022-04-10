@@ -51,7 +51,3 @@ func _spawn_game_piece(x_or_o: String, is_active=true) -> void:
 	game_piece.active = is_active
 	_holder_game_pieces[game_piece.type] = game_piece
 	add_child(game_piece)
-
-
-func _return_piece_to_holder(piece: GamePiece) -> void:
-	piece.position = get_node("%s_PiecePosition" % piece.type.to_upper()).position

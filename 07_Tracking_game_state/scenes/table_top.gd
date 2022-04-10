@@ -46,7 +46,7 @@ func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void
 	game_piece_holder.initialize_player_turn(player_game_piece, in_single_player_mode)
 
 
-func _end_game(victor: Win) -> void:
+func _end_game(victor: String) -> void:
 	print("And the winner is: %s" % victor)
 	GameState.last_winner = victor
 	SceneChanger.change_scene(round_complete_scene_path)

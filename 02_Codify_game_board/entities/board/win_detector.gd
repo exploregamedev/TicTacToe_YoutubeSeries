@@ -2,17 +2,17 @@ extends Reference
 class_name WinDetector
 
 
-static func check_win(board_matrix: Array):
+static func check_win(board_matrix: Array) -> String:  # "x", "o", ""
 	var row_result = _check_rows(board_matrix)
 	if row_result:
-		return row_result
+		return row_result.to_lower()
 	var column_result = _check_columns(board_matrix)
 	if column_result:
-		return column_result
-	return _check_diagonals(board_matrix)
+		return column_result.to_lower()
+	return _check_diagonals(board_matrix).to_lower()
 
 
-static func _check_rows(board) -> String:
+static func _check_rows(board: Array) -> String:
 	for row_idx in range(len(board)):
 		var row = board[row_idx]
 		if _is_winning_sequence(row):
@@ -20,8 +20,8 @@ static func _check_rows(board) -> String:
 	return ""
 
 
-static func _check_columns(board) -> String:
-	board = _transpose(board.duplicate())
+static func _check_columns(board: Array) -> String:
+	board = _transpose(board)
 	for row_idx in range(len(board)):
 		var row = board[row_idx]
 		if _is_winning_sequence(row):
@@ -29,7 +29,7 @@ static func _check_columns(board) -> String:
 	return ""
 
 
-static func _transpose(matrix):
+static func _transpose(matrix: Array):
 	var transposed = []
 	for i in range(len(matrix)):
 		var temp = []
@@ -39,9 +39,11 @@ static func _transpose(matrix):
 	return transposed
 
 
+# A sequence (row, col, diag) is a win if it is full of the same element (and that
+#   element is not "")
 static func _is_winning_sequence(sequence: Array) -> bool:
 	var sequence_unique_members = _unique(sequence)
-	return len(sequence_unique_members) == 1 and not sequence_unique_members[0] in ["", null]
+	return len(sequence_unique_members) == 1 and sequence_unique_members[0] != ""
 
 
 static func _unique(values):
@@ -51,7 +53,7 @@ static func _unique(values):
 	return set_facade.keys()
 
 
-static func _check_diagonals(board) -> String:
+static func _check_diagonals(board: Array) -> String:
 	var diag = []
 	for i in range(len(board)):
 		diag.append(board[i][i])

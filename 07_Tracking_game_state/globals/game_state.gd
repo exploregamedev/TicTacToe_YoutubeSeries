@@ -2,7 +2,7 @@ extends Node
 
 
 var game_mode: int setget _set_game_mode, _get_game_mode
-var last_winner: Win setget _set_last_winner, _get_last_winner
+var last_winner: String setget _set_last_winner, _get_last_winner
 
 var _win_tally_x: int
 var _win_tally_o: int
@@ -14,7 +14,7 @@ func reset() -> void:
 	_win_tally_x = 0
 	_win_tally_o = 0
 	game_mode = 0
-	last_winner = null
+	last_winner = ""
 
 
 func get_win_tally(x_or_o: String) -> int:
@@ -34,15 +34,16 @@ func _get_game_mode() -> int:
 	return game_mode
 
 
-func _set_last_winner(winner: Win) -> void:
+func _set_last_winner(winner: String) -> void:
+	winner = winner.to_lower()
 	last_winner = winner
-	assert(winner.victor in ["x", "o"])
-	if(winner.victor == 'x'):
+	assert(winner in ["x", "o"])
+	if(winner == "x"):
 		_win_tally_x += 1
 	else:
 		_win_tally_o += 1
 
 
-func _get_last_winner() -> Win:
+func _get_last_winner() -> String:
 	return last_winner
 

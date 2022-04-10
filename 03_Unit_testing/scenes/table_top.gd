@@ -38,13 +38,9 @@ func _spawn_game_piece(x_or_o: String) -> void:
 # When a game piece is placed on the board, we need to instance a new one in this scene
 func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
 	_spawn_game_piece(game_piece.type)
-	var victor = game_board.get_winner()
+	var victor: String = game_board.get_winner()
 	if victor:
 		print("And the winner is: %s" % victor)
-
-
-func _return_piece_to_holder(piece: GamePiece) -> void:
-	piece.position = get_node("%s_PiecePosition" % piece.type.to_upper()).position
 
 
 func _to_string() -> String:
