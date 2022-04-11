@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/progress_summary.gd" type="Script" id=1]
+[ext_resource path="res://assets/luckiest_guy_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/luckiest_guy_medium.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/luckiest_guy_subtitle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/button_stylebox_normal.tres" type="StyleBox" id=5]
+
+[node name="ProgressSummary" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Padding" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Padding"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="Padding/VBox"]
+margin_right = 984.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 2 )
+text = "Tic Tac Toe"
+align = 1
+
+[node name="SubTitle" type="Label" parent="Padding/VBox"]
+margin_top = 84.0
+margin_right = 984.0
+margin_bottom = 133.0
+custom_fonts/font = ExtResource( 4 )
+text = "Summary"
+align = 1
+
+[node name="Congrats" type="Label" parent="Padding/VBox"]
+margin_top = 153.0
+margin_right = 984.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 3 )
+text = "Congratulations to __ for winning last round"
+align = 1
+
+[node name="Tally" type="Label" parent="Padding/VBox"]
+margin_top = 198.0
+margin_right = 984.0
+margin_bottom = 223.0
+custom_fonts/font = ExtResource( 3 )
+text = "Tally"
+align = 1
+
+[node name="XWins" type="Label" parent="Padding/VBox"]
+margin_top = 243.0
+margin_right = 984.0
+margin_bottom = 268.0
+custom_fonts/font = ExtResource( 3 )
+text = "X wins: ___"
+align = 1
+
+[node name="OWins" type="Label" parent="Padding/VBox"]
+margin_top = 288.0
+margin_right = 984.0
+margin_bottom = 313.0
+custom_fonts/font = ExtResource( 3 )
+text = "O wins: ___"
+align = 1
+
+[node name="HBox" type="HBoxContainer" parent="Padding/VBox"]
+margin_top = 333.0
+margin_right = 984.0
+margin_bottom = 378.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="PlayAgain" type="Label" parent="Padding/VBox/HBox"]
+margin_left = 344.0
+margin_top = 10.0
+margin_right = 485.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 3 )
+text = "Play again?"
+
+[node name="Yes" type="Button" parent="Padding/VBox/HBox"]
+margin_left = 505.0
+margin_right = 567.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = ExtResource( 5 )
+text = "Yes"
+
+[node name="No" type="Button" parent="Padding/VBox/HBox"]
+margin_left = 587.0
+margin_right = 639.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = ExtResource( 5 )
+text = "No"

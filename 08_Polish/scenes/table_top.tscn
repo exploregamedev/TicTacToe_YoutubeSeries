@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/game_piece_holder/game_piece_holder.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/table_top.gd" type="Script" id=2]
+
+[node name="TableTop" type="Node2D"]
+script = ExtResource( 2 )
+round_complete_scene_path = "res://scenes/progress_summary.tscn"
+
+[node name="BoardPosition" type="Position2D" parent="."]
+position = Vector2( 384, 192 )
+
+[node name="GamePieceHolder" parent="." instance=ExtResource( 1 )]
