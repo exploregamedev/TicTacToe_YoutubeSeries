@@ -22,7 +22,7 @@ func _ready() -> void:
 	$BoardPosition.add_child(game_board)
 
 
-func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
+func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void:
 	var victor = game_board.get_winner()
 	if victor:
 		print("And the winner is: %s" % victor)
@@ -31,7 +31,7 @@ func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
 		print("Game over, there was a tie")
 		SceneChanger.change_scene(round_complete_scene_path)
 	else:
-		game_piece_holder.initialize_player_turn(game_piece)
+		game_piece_holder.initialize_player_turn(player_game_piece)
 
 
 func _to_string() -> String:

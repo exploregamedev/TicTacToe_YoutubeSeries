@@ -36,5 +36,5 @@ func _spawn_game_piece(x_or_o: String) -> void:
 
 
 # When a game piece is placed on the board, we need to instance a new one in this scene
-func _on_player_placed_game_piece_on_board(game_piece: GamePiece) -> void:
-	_spawn_game_piece(game_piece.type)
+func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void:
+	_spawn_game_piece(player_game_piece.type)

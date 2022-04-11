@@ -29,27 +29,38 @@ func _ready() -> void:
 
 func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void:
 	var in_single_player_mode = false
-	var victor = game_board.get_winner()
-	if victor:
-		_end_game(victor)
+	# Check if player's last move resulted in win or tie
+	if(_is_finishing_result(game_board.get_winner())):
 		return
 
-	if computer_opponent:
-		in_single_player_mode = true
-		if not computer_opponent.game_piece_type:
-			computer_opponent.game_piece_type = game_piece_holder.other_piece_type(player_game_piece)
-		computer_opponent.take_turn(game_board.get_empty_tiles())
-		victor = game_board.get_winner()
-		if victor:
-			_end_game(victor)
-			return
+	if not computer_opponent:
+		game_piece_holder.initialize_player_turn(player_game_piece, in_single_player_mode)
+		return
+
+	# If this is the first placed piece, so set sides for computer opponent
+	in_single_player_mode = true
+	if not computer_opponent.game_piece_type:
+		computer_opponent.game_piece_type = game_piece_holder.other_piece_type(player_game_piece)
+	computer_opponent.take_turn(game_board.get_empty_tiles())
+	# Check if computer's move resulted in win or tie
+	if(_is_finishing_result(game_board.get_winner())):
+		return
+
 	game_piece_holder.initialize_player_turn(player_game_piece, in_single_player_mode)
 
 
-func _end_game(victor: String) -> void:
-	print("And the winner is: %s" % victor)
-	GameState.last_winner = victor
-	SceneChanger.change_scene(round_complete_scene_path)
+func _is_finishing_result(victor) -> bool:
+	var finishing_result = false
+	if victor:
+		print("And the winner is: %s" % victor)
+		finishing_result = true
+		GameState.last_winner = victor
+		SceneChanger.change_scene(round_complete_scene_path)
+	elif(game_board.is_full()):
+		print("Game over, there was a tie")
+		finishing_result = true
+		SceneChanger.change_scene(round_complete_scene_path)
+	return finishing_result
 
 
 func _to_string() -> String:

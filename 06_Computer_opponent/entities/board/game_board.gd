@@ -41,7 +41,7 @@ func get_empty_tiles() -> Array:  # Array[GameTile]
 
 
 func get_winner():
-	return WinDetector.check_win(dump_state())
+	return WinDetector.check_win(_dump_state())
 
 
 func is_full() -> bool:
@@ -86,7 +86,7 @@ func _on_game_piece_dropped(piece: GamePiece) -> void:
 
 # output a simplified matrix of just "x"|"o"|"" values
 # this form simplifies the win detection code and testing
-func dump_state() -> Array:
+func _dump_state() -> Array:
 	var state = []
 	var board_size = len(tiles_matrix)
 	for row_number in board_size:
@@ -100,6 +100,6 @@ func dump_state() -> Array:
 
 func _to_string() -> String:
 	var ascii_matrix = ""
-	for row in dump_state():
+	for row in _dump_state():
 		ascii_matrix += "\n%s" % str(row)
 	return ascii_matrix

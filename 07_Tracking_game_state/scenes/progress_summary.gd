@@ -21,7 +21,10 @@ func _ready() -> void:
 
 func _set_values() -> void:
 	var last_winner = GameState.last_winner
-	congrats_statement.text = "Congratulations to %s for winning last round" % last_winner
+	if last_winner:
+		congrats_statement.text = "Congratulations to %s for winning last round" % last_winner
+	else:
+		congrats_statement.text = "Last round resulted in a tie"
 	wins_tally_x.text = "X wins: %s" % GameState.get_win_tally("x")
 	wins_tally_o.text = "O wins: %s" % GameState.get_win_tally("o")
 
