@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/progress_summary.gd" type="Script" id=1]
-[ext_resource path="res://assets/luckiest_guy_title.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/luckiest_guy_medium.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/luckiest_guy_subtitle.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/button_stylebox_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/fonts/luckiest_guy_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/luckiest_guy_medium.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/luckiest_guy_subtitle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/theme/button_stylebox_normal.tres" type="StyleBox" id=5]
 
 [node name="ProgressSummary" type="Control"]
 anchor_right = 1.0

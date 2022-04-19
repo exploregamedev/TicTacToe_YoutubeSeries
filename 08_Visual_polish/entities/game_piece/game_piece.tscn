@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/game_piece/game_piece.gd" type="Script" id=1]
-[ext_resource path="res://assets/game_piece_x.png" type="Texture" id=2]
-[ext_resource path="res://assets/star_particle.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/game_piece_x.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/star_particle.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.5, 31 )

@@ -25,7 +25,7 @@ func get_texture() -> Texture:
 
 func set_type(x_or_o: String) -> void:
 	type = x_or_o.to_lower()
-	$Sprite.texture = load("res://assets/game_piece_%s.png" % type.to_lower())
+	$Sprite.texture = load("res://assets/sprites/game_piece_%s.png" % type.to_lower())
 
 
 func _attach_to_mouse() -> void:
