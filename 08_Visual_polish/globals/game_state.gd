@@ -1,6 +1,6 @@
 extends Node
 
-
+var game_background_color = Color("0f0a07")
 var game_mode: int setget _set_game_mode, _get_game_mode
 var last_winner: String setget _set_last_winner, _get_last_winner
 

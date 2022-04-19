@@ -2,7 +2,6 @@ extends Node2D
 class_name GameTile
 
 export(int) var tile_size: int = 100
-export(Color) var background_color = Color.white
 
 var held_piece_type: String = ""
 var row_index
@@ -11,7 +10,6 @@ var is_holding_piece setget ,_is_holding_piece
 
 
 func _ready() -> void:
-	$Background.color = background_color
 	# Have the background ignore mouse events, else it will interfier
 	# with Drag&Drop
 	$Background.mouse_filter = Control.MOUSE_FILTER_IGNORE

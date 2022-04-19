@@ -11,7 +11,6 @@ onready var game_piece_holder: GamePieceHolder = $GamePieceHolder
 
 # Set up the game board and the initial game pieces
 func _ready() -> void:
-	VisualServer.set_default_clear_color(background_color)
 	game_board = game_board_scene.instance()
 	game_piece_holder.initialize(game_board)
 	var connection

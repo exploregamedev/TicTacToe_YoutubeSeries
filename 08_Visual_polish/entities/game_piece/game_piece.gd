@@ -44,8 +44,12 @@ func _on_GamePiece_input_event(_viewport: Node, _event: InputEvent, _shape_idx: 
 	# Mouse is over the game piece and left click was made
 	if Input.is_action_just_pressed("click"):
 		_dragging = true
+		$Sprite.scale.x = .8
+		$Sprite.scale.y = .8
 	elif Input.is_action_just_released("click"):
 		_dragging = false
+		$Sprite.scale.x = 1
+		$Sprite.scale.y = 1
 		emit_signal("game_piece_dropped", self)
 
 

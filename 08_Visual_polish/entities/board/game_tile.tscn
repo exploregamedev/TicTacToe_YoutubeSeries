@@ -13,9 +13,7 @@ margin_left = -48.0
 margin_top = -48.0
 margin_right = -48.0
 margin_bottom = -48.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0.94902, 0.00784314, 0.658824, 1 )
 
 [node name="XorO" type="Sprite" parent="."]
 

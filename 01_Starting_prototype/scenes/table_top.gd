@@ -11,7 +11,6 @@ var game_board: GameBoard
 
 # Set up the game board and the initial game pieces
 func _ready() -> void:
-	VisualServer.set_default_clear_color(background_color)
 	game_board = game_board_scene.instance()
 	var connection
 	connection = game_board.connect("player_placed_game_piece_on_board", self, "_on_player_placed_game_piece_on_board")

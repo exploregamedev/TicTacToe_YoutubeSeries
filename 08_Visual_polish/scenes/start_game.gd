@@ -8,6 +8,7 @@ onready var quit_game_button = $Padding/Vbox/HBox/QuitGame
 export(String) var table_top_path = "res://scenes/table_top.tscn"
 
 func _ready() -> void:
+	VisualServer.set_default_clear_color(GameState.game_background_color)
 	var connected
 	connected = start_single_player_button.connect("pressed", self, "_on_start_single_player_button_pressed")
 	assert(connected == OK)

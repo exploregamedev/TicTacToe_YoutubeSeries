@@ -1,0 +1,24 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=2]
+
+[sub_resource type="AudioEffectReverb" id=3]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectCompressor" id=4]
+resource_name = "Compressor"
+
+[sub_resource type="AudioEffectPhaser" id=5]
+resource_name = "Phaser"
+
+[resource]
+bus/0/effect/0/effect = SubResource( 3 )
+bus/0/effect/0/enabled = false
+bus/1/name = "Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 4 )
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource( 5 )
+bus/1/effect/1/enabled = true

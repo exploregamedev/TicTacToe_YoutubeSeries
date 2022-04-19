@@ -6,11 +6,13 @@ onready var congrats_statement: Label = $Padding/VBox/Congrats
 onready var wins_tally_x: Label = $Padding/VBox/XWins
 onready var wins_tally_o: Label = $Padding/VBox/OWins
 
+
 var start_game_path = "res://scenes/start_game.tscn"
 var table_top_path = "res://scenes/table_top.tscn"
 
 
 func _ready() -> void:
+	VisualServer.set_default_clear_color(GameState.game_background_color)
 	var connected
 	connected = play_again_no_button.connect("pressed", self, "_on_play_again_no_button_pressed")
 	assert(connected == OK)
