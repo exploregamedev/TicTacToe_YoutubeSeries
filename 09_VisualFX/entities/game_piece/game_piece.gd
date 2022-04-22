@@ -46,6 +46,7 @@ func _on_GamePiece_input_event(_viewport: Node, _event: InputEvent, _shape_idx: 
 		_dragging = true
 		$Sprite.scale.x = .8
 		$Sprite.scale.y = .8
+	# The game piece is being dropped
 	elif Input.is_action_just_released("click"):
 		_dragging = false
 		$Sprite.scale.x = 1
