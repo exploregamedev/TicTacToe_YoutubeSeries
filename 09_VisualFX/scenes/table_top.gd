@@ -55,6 +55,8 @@ func _is_finishing_result(victor) -> bool:
 		print("And the winner is: %s" % victor)
 		finishing_result = true
 		GameState.last_winner = victor
+		game_board.win_animation()
+		yield(game_board,"win_animation_completed")
 		SceneChanger.change_scene(round_complete_scene_path)
 	elif(game_board.is_full()):
 		print("Game over, there was a tie")

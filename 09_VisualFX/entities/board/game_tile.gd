@@ -7,6 +7,7 @@ var held_piece_type: String = ""
 var row_index
 var column_index
 var is_holding_piece setget ,_is_holding_piece
+onready var win_animation: Particles2D = $WinExplosion
 
 
 func _ready() -> void:
@@ -22,6 +23,11 @@ func attach_piece(piece: GamePiece) -> void:
 	$XorO.texture = piece.get_texture()
 	held_piece_type = piece.type
 	piece.queue_free()
+
+
+func play_win_animation(blocking = true) -> float:
+	win_animation.emitting = true
+	return win_animation.lifetime
 
 
 func _is_holding_piece() -> bool:

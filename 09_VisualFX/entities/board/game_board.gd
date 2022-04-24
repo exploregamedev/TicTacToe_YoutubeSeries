@@ -2,6 +2,7 @@ extends Node2D
 class_name GameBoard
 
 signal player_placed_game_piece_on_board(game_piece)
+signal win_animation_completed
 
 var game_tile_scene: PackedScene = preload("res://entities/board/game_tile.tscn")
 var _game_piece_over_tile: GameTile
@@ -38,6 +39,13 @@ func get_empty_tiles() -> Array:  # Array[GameTile]
 			if not (tile as GameTile).is_holding_piece:
 				empty_tiles.append(tile)
 	return empty_tiles
+
+
+func win_animation() -> void:
+	var center_tile: GameTile = tiles_matrix[1][1]
+	var animation_lifetime = center_tile.play_win_animation()
+	yield(get_tree().create_timer(animation_lifetime),"timeout")
+	emit_signal("win_animation_completed")
 
 
 func get_winner():

@@ -39,6 +39,7 @@ color = Color( 0.94902, 0.00784314, 0.658824, 1 )
 shape = SubResource( 1 )
 
 [node name="WinExplosion" type="Particles2D" parent="."]
+z_index = 1
 emitting = false
 amount = 200
 lifetime = 3.0
