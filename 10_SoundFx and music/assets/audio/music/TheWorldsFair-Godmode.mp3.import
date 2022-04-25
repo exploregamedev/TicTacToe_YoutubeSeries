@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TheWorldsFair-Godmode.mp3-3f67d0f403899a79a00800e138a9b599.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/TheWorldsFair-Godmode.mp3"
+dest_files=[ "res://.import/TheWorldsFair-Godmode.mp3-3f67d0f403899a79a00800e138a9b599.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
