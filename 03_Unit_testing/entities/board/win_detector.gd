@@ -13,23 +13,16 @@ static func check_win(board_matrix: Array) -> String:  # "x", "o", ""
 
 
 static func _check_rows(board: Array) -> String:
-	return _check_for_winning_sequence(board, "row")
-
-
-static func _check_columns(board: Array) -> String:
-	return _check_for_winning_sequence(board, "column")
-
-
-static func _check_for_winning_sequence(board: Array, rows_or_columns: String) -> String:
-	rows_or_columns = rows_or_columns.to_lower()
-	assert(rows_or_columns in ["row", "column"])
-	if rows_or_columns == "column":
-		board = _transpose(board)
 	for row_idx in range(len(board)):
 		var row = board[row_idx]
 		if _is_winning_sequence(row):
 			return row[0] # The X or O making up this row
 	return ""
+
+
+static func _check_columns(board: Array) -> String:
+	board = _transpose(board)
+	return _check_rows(board)
 
 
 static func _transpose(matrix: Array):

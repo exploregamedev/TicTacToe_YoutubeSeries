@@ -19,6 +19,7 @@ func _ready() -> void:
 # Take the texture from the game piece and apply it to the tile
 # Then destroy the game piece
 func attach_piece(piece: GamePiece) -> void:
+	print("Attaching GamePiece[%s] to Tile at %s, %s" % [piece.type, self.row_index, self.column_index])
 	$XorO.texture = piece.get_texture()
 	held_piece_type = piece.type
 	piece.queue_free()

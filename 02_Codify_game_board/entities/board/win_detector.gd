@@ -22,11 +22,7 @@ static func _check_rows(board: Array) -> String:
 
 static func _check_columns(board: Array) -> String:
 	board = _transpose(board)
-	for row_idx in range(len(board)):
-		var row = board[row_idx]
-		if _is_winning_sequence(row):
-			return row[0] # The X or O making up this row
-	return ""
+	return _check_rows(board)
 
 
 static func _transpose(matrix: Array):
@@ -39,8 +35,8 @@ static func _transpose(matrix: Array):
 	return transposed
 
 
-# A sequence (row, col, diag) is a win if it is full of the same element (and that
-#   element is not "")
+# A sequence (row, col, diag) is a win if it is full of the same
+#   element (and that element is not "")
 static func _is_winning_sequence(sequence: Array) -> bool:
 	var sequence_unique_members = _unique(sequence)
 	return len(sequence_unique_members) == 1 and sequence_unique_members[0] != ""

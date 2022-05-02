@@ -1,6 +1,13 @@
 # TTT (unnamed project)
 
 
+## Callouts for some helpful project setting
+
+StretchMode: 2D
+
+Force FPS to 60 (your laptop battery will thank you)
+
+
 ## Media attribution
 
 ### Music
