@@ -3,7 +3,7 @@ class_name GamePiece
 
 var _dragging: bool = false
 var type: String setget set_type
-var active: bool = true
+var active: bool = true setget _set_active
 
 signal game_piece_dropped(piece)
 
@@ -29,6 +29,13 @@ func get_texture() -> Texture:
 func set_type(x_or_o: String) -> void:
 	type = x_or_o.to_lower()
 	$Sprite.texture = load("res://assets/sprites/game_piece_%s.png" % type.to_lower())
+
+
+func _set_active(is_active: bool) -> void:
+	if is_active:
+		$Sprite.modulate.a = 1.0
+	else:
+		$Sprite.modulate.a = 0.5
 
 
 func _attach_to_mouse() -> void:

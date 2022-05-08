@@ -16,19 +16,19 @@ func test_initialize_both_pieces_active():
 func test_initialize_pieces_state_after_first_move():
 	var game_board = autofree(GameBoardScene.instance())
 	var game_piece_holder = (autofree(GamePieceHolderScene.instance()) as GamePieceHolder)
-	var game_piece_x = (autofree(GamePieceScene.instance()) as GamePiece)
+	var just_played_piece_x = (autofree(GamePieceScene.instance()) as GamePiece)
 
-	game_piece_x.type = "x"
+	just_played_piece_x.type = "x"
 
 	game_piece_holder.initialize(game_board)
-	game_piece_holder.initialize_player_turn(game_piece_x)
+	game_piece_holder.initialize_player_turn(just_played_piece_x)
 
 	assert_false(game_piece_holder.get_game_piece("x").active, "X piece should be INACTIVE after X turn is over")
 	assert_true(game_piece_holder.get_game_piece("o").active, "O piece should be ACTIVE after X turn is over")
 
-	var game_piece_o = (autofree(GamePieceScene.instance()) as GamePiece)
-	game_piece_x.type = "o"
-	game_piece_holder.initialize_player_turn(game_piece_x)
+	var just_played_piece_o = (autofree(GamePieceScene.instance()) as GamePiece)
+	just_played_piece_o.type = "o"
+	game_piece_holder.initialize_player_turn(just_played_piece_o)
 
 	assert_true(game_piece_holder.get_game_piece("x").active, "X piece should be ACTIVE after O turn is over")
 	assert_false(game_piece_holder.get_game_piece("o").active, "O piece should be INACTIVE after O turn is over")
