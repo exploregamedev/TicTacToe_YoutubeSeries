@@ -24,6 +24,7 @@ func _ready() -> void:
 # Place a game piece in the scene, so it can be dragged to the game board
 # by the Player
 func _spawn_game_piece(x_or_o: String) -> void:
+	print("Spawning new %s game piece" % x_or_o)
 	var game_piece: GamePiece = game_piece_scene.instance()
 	var connection
 	connection = game_piece.connect("game_piece_dropped", game_board, "_on_game_piece_dropped")
@@ -36,4 +37,5 @@ func _spawn_game_piece(x_or_o: String) -> void:
 
 # When a game piece is placed on the board, we need to instance a new one in this scene
 func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void:
+	print("[EVENT received] @ TableTop::_on_player_placed_game_piece_on_board")
 	_spawn_game_piece(player_game_piece.type)

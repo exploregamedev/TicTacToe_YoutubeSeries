@@ -21,18 +21,14 @@ static func _check_rows(board: Array) -> String:
 
 
 static func _check_columns(board: Array) -> String:
-	board = _transpose(board)
-	return _check_rows(board)
-
-
-static func _transpose(matrix: Array):
-	var transposed = []
-	for i in range(len(matrix)):
-		var temp = []
-		for row in matrix:
-			temp += [row[i]]
-		transposed += [temp]
-	return transposed
+	var col_segment = []
+	for col_idx in range(len(board)):
+		for row_idx in range(len(board)):
+			col_segment.append(board[row_idx][col_idx])
+		if _is_winning_sequence(col_segment):
+			return col_segment[0] # The X or O making up this column
+		col_segment = []
+	return ""
 
 
 # A sequence (row, col, diag) is a win if it is full of the same element (and that

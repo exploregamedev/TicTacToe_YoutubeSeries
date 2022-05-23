@@ -56,6 +56,7 @@ func _on_game_tile_area_exited(_game_piece_area: Area2D, _tile: GameTile) -> voi
 # If a game piece is dropped over a tile, attach it to that tile
 # The signal is attached to the function in TableTop::_spawn_game_piece()
 func _on_game_piece_dropped(piece: GamePiece) -> void:
+	print("[EVENT received] @ GameBoard::_on_game_piece_dropped")
 	if _game_piece_over_tile and not _game_piece_over_tile.is_holding_piece:
 		_game_piece_over_tile.attach_piece(piece)
 		_game_piece_over_tile = null
