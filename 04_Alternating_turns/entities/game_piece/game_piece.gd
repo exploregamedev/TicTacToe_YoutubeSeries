@@ -32,6 +32,7 @@ func set_type(x_or_o: String) -> void:
 
 
 func _set_active(is_active: bool) -> void:
+	active = is_active
 	if is_active:
 		$Sprite.modulate.a = 1.0
 	else:
