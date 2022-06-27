@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void:
-	var victor = game_board.get_winner()
+	var victor: String = game_board.get_winner()
 	if victor:
 		print("And the winner is: %s" % victor)
 	elif(game_board.is_full()):
