@@ -28,6 +28,7 @@ func get_game_piece(x_or_o: String) -> GamePiece:
 
 
 func _set_pieces_holder_state(just_played_piece: GamePiece) -> void:
+	# spawn a replacement piece in the inacative state
 	_spawn_game_piece(just_played_piece.type, false)
 	_activate_piece(_other_piece_type(just_played_piece))
 
