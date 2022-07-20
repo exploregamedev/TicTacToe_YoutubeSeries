@@ -7,7 +7,7 @@ onready var button_click: AudioStreamPlayer = $ButtonClickSound
 onready var menu_music: AudioStreamPlayer = $MenuMusic
 
 
-export(String) var table_top_path = "res://scenes/table_top.tscn"
+var table_top_path = "res://scenes/table_top.tscn"
 
 func _ready() -> void:
 	VisualServer.set_default_clear_color(GameState.game_background_color)

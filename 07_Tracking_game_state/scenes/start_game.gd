@@ -5,7 +5,7 @@ onready var start_two_player_button = $Padding/Vbox/Hbox/StartTwoPlayer
 onready var quit_game_button = $Padding/Vbox/HBox/QuitGame
 
 
-export(String) var table_top_path = "res://scenes/table_top.tscn"
+var table_top_path = "res://scenes/table_top.tscn"
 
 func _ready() -> void:
 	var connected
