@@ -2,7 +2,7 @@ extends Node2D
 
 export(int) var board_size: int = 3
 export(Color) var background_color = Color.black
-export(String, FILE, "*.tscn") var round_complete_scene_path
+var round_complete_scene_path = "res://scenes/start_game.tscn"
 
 
 var game_board_scene: PackedScene = preload("res://entities/board/game_board.tscn")
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func _on_player_placed_game_piece_on_board(player_game_piece: GamePiece) -> void:
-	var victor = game_board.get_winner()
+	var victor: String = game_board.get_winner()
 	if victor:
 		print("And the winner is: %s" % victor)
 		SceneChanger.change_scene(round_complete_scene_path)
