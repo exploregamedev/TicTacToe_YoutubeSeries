@@ -37,8 +37,8 @@ func _activate_piece(piece_type: String) -> void:
 	(_holder_game_pieces[piece_type.to_lower()] as GamePiece).active = true
 
 
-func _other_piece_type(this_piece: GamePiece) -> String:
-	return _pieces_toggle[this_piece.type]
+func other_piece_type(game_piece: GamePiece) -> String:
+	return _pieces_toggle[game_piece.type]
 
 
 func _spawn_game_piece(x_or_o: String, is_active=true) -> void:

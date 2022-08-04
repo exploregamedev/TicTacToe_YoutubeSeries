@@ -19,12 +19,11 @@ func initialize(game_board: GameBoard) -> void:
 	_spawn_game_piece("o")
 
 
-func other_piece_type(game_piece: GamePiece) -> String:
-	return _pieces_toggle[game_piece.type]
-
-
 func initialize_player_turn(just_played_piece: GamePiece, in_single_player_mode: bool) -> void:
 	_set_pieces_holder_state(just_played_piece, in_single_player_mode)
+
+func get_game_piece(x_or_o: String) -> GamePiece:
+	return _holder_game_pieces[x_or_o.to_lower()]
 
 
 func _set_pieces_holder_state(just_played_piece: GamePiece, in_single_player_mode: bool) -> void:
@@ -43,8 +42,8 @@ func _set_piece_state(piece_type: String, is_active: bool) -> void:
 	(_holder_game_pieces[piece_type.to_lower()] as GamePiece).active = is_active
 
 
-func get_game_piece(x_or_o: String) -> GamePiece:
-	return _holder_game_pieces[x_or_o.to_lower()]
+func other_piece_type(game_piece: GamePiece) -> String:
+	return _pieces_toggle[game_piece.type]
 
 
 func _spawn_game_piece(x_or_o: String, is_active=true) -> void:
