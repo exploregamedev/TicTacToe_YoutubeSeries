@@ -1,6 +1,8 @@
 extends Node
 
-
+# setget enables mapping property set/get access to a function
+#   so in code GameState.game_mode = GameMode.SinglePlayer will trigger the _set_game_mode
+#   function passing in the value GameMode.SinglePlayer
 var game_mode: int setget _set_game_mode, _get_game_mode
 var last_winner: String setget _set_last_winner, _get_last_winner
 
