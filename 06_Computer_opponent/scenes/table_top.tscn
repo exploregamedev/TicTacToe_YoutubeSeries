@@ -5,7 +5,6 @@
 
 [node name="TableTop" type="Node2D"]
 script = ExtResource( 2 )
-round_complete_scene_path = "res://scenes/start_game.tscn"
 
 [node name="BoardPosition" type="Position2D" parent="."]
 position = Vector2( 384, 192 )
