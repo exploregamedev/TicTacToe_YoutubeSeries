@@ -38,8 +38,8 @@ func _get_game_mode() -> int:
 
 func _set_last_winner(winner: String) -> void:
 	winner = winner.to_lower()
-	last_winner = winner
 	assert(winner in ["x", "o"])
+	last_winner = winner
 	if(winner == "x"):
 		_win_tally_x += 1
 	else:
