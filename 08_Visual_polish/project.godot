@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://entities/game_piece/game_piece.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "GamePieceHolder",
 "language": "GDScript",
 "path": "res://entities/game_piece_holder/game_piece_holder.gd"
