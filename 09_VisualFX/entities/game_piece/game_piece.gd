@@ -16,6 +16,7 @@ func _ready() -> void:
 # On each frame if _dragging is true this piece's position is set to
 # that of the mouse.
 func _process(_delta: float) -> void:
+	# If the piece is in the inactive state, ignore the input
 	if not active:
 		return
 	if _dragging:
@@ -32,7 +33,7 @@ func set_type(x_or_o: String) -> void:
 
 
 func _set_active(is_active: bool) -> void:
-    active = is_active
+	active = is_active
 	if is_active:
 		$Sprite.modulate.a = 1.0
 	else:
@@ -47,6 +48,7 @@ func _attach_to_mouse() -> void:
 # CollisionShape2D is mapped to this function.  Thus in the case where the mouse pointer
 # is over our game pieces, we can react to the click or release of the right mouse button
 func _on_GamePiece_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
+	# If the piece is in the inactive state, ignore the input
 	if not active:
 		return
 	# Mouse is over the game piece and left click was made
