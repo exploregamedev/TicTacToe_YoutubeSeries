@@ -2,7 +2,7 @@ extends Node2D
 
 export(int) var board_size: int = 3
 export(Color) var background_color = Color.black
-var round_complete_scene_path = "res://scenes/start_game.tscn"
+var round_complete_scene_path = "res://scenes/progress_summary.tscn"
 
 
 
